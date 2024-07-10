@@ -1,4 +1,4 @@
-import { ref, computed, defineComponent, onMounted, onBeforeUnmount, renderSlot, unref, createElementVNode, openBlock, createElementBlock, createCommentVNode, Fragment, toDisplayString, normalizeClass } from "vue";
+import { ref, computed, defineComponent, onMounted, onBeforeUnmount, renderSlot, unref, createElementVNode, normalizeClass, openBlock, createElementBlock, createCommentVNode, Fragment, toDisplayString } from "vue";
 const audioCtx = new (window.AudioContext || window["webkitAudioContext"])();
 let analyser = audioCtx.createAnalyser();
 const AudioContextUtil = {
@@ -329,14 +329,13 @@ const useRecorder = ({ afterStartRecording, afterStopRecording, afterPauseRecord
   };
 };
 var VueVoiceRecording_vue_vue_type_style_index_0_lang = "";
-const _hoisted_1 = { class: "vue-voice-recorder" };
-const _hoisted_2 = { class: "vue-voice-recorder__container" };
-const _hoisted_3 = { class: "vue-voice-recorder__state" };
-const _hoisted_4 = {
+const _hoisted_1 = { class: "vue-voice-recorder__container" };
+const _hoisted_2 = { class: "vue-voice-recorder__state" };
+const _hoisted_3 = {
   key: 0,
   class: "vue-voice-recorder__stop"
 };
-const _hoisted_5 = {
+const _hoisted_4 = {
   key: 1,
   class: "vue-voice-recorder__start",
   xmlns: "http://www.w3.org/2000/svg",
@@ -345,14 +344,14 @@ const _hoisted_5 = {
   preserveAspectRatio: "xMidYMid meet",
   viewBox: "0 0 24 24"
 };
-const _hoisted_6 = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_5 = /* @__PURE__ */ createElementVNode("path", {
   fill: "currentColor",
   d: "M12 14q-1.25 0-2.125-.875T9 11V5q0-1.25.875-2.125T12 2q1.25 0 2.125.875T15 5v6q0 1.25-.875 2.125T12 14Zm-1 7v-3.075q-2.6-.35-4.3-2.325Q5 13.625 5 11h2q0 2.075 1.463 3.537Q9.925 16 12 16t3.538-1.463Q17 13.075 17 11h2q0 2.625-1.7 4.6q-1.7 1.975-4.3 2.325V21Z"
 }, null, -1);
-const _hoisted_7 = [
-  _hoisted_6
+const _hoisted_6 = [
+  _hoisted_5
 ];
-const _hoisted_8 = { class: "vue-voice-recorder__recording-time" };
+const _hoisted_7 = { class: "vue-voice-recorder__recording-time" };
 const _sfc_main = /* @__PURE__ */ defineComponent({
   props: {
     recordingStopDelay: {
@@ -394,7 +393,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       }, props.recordingStopDelay);
     };
     const handleClick = () => {
-      console.log("In click");
       if (props.pressAndHoldToRecord)
         return;
       toggleStartAndStop();
@@ -450,21 +448,23 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         pauseRecording: unref(pauseRecording),
         resumeRecording: unref(resumeRecording)
       }, () => [
-        createElementVNode("div", _hoisted_1, [
-          createElementVNode("div", _hoisted_2, [
+        createElementVNode("div", {
+          class: normalizeClass(["vue-voice-recorder", { "recording": unref(isRecording) }])
+        }, [
+          createElementVNode("div", _hoisted_1, [
             createElementVNode("div", {
               class: "vue-voice-recorder__start-and-stop",
               onMousedown: handleMouseDown,
               onMouseup: handleMouseUp,
               onClick: handleClick
             }, [
-              createElementVNode("div", _hoisted_3, [
-                unref(isRecording) ? (openBlock(), createElementBlock("span", _hoisted_4)) : createCommentVNode("", true),
-                !unref(isRecording) ? (openBlock(), createElementBlock("svg", _hoisted_5, _hoisted_7)) : createCommentVNode("", true)
+              createElementVNode("div", _hoisted_2, [
+                unref(isRecording) ? (openBlock(), createElementBlock("span", _hoisted_3)) : createCommentVNode("", true),
+                !unref(isRecording) ? (openBlock(), createElementBlock("svg", _hoisted_4, _hoisted_6)) : createCommentVNode("", true)
               ])
             ], 32),
             unref(isRecording) ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-              createElementVNode("div", _hoisted_8, toDisplayString(unref(recordingTime)), 1),
+              createElementVNode("div", _hoisted_7, toDisplayString(unref(recordingTime)), 1),
               createElementVNode("div", {
                 class: "vue-voice-recorder__pause-and-resume",
                 onClick: _cache[0] || (_cache[0] = (...args) => unref(togglePauseAndResume) && unref(togglePauseAndResume)(...args))
@@ -482,7 +482,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             ref_key: "canvas",
             ref: canvas
           }, null, 2)) : createCommentVNode("", true)
-        ])
+        ], 2)
       ]);
     };
   }

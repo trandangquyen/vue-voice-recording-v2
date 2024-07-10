@@ -36,7 +36,7 @@
 ## Install
 
 ```bash
-npm install https://github.com/DiAvisoo/vue-voice-recording
+npm install https://github.com/trandangquyen/vue-voice-recording-v2
 ```
 
 ## Setup

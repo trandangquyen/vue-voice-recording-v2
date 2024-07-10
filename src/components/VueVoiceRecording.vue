@@ -11,7 +11,7 @@
       :pauseRecording="pauseRecording"
       :resumeRecording="resumeRecording"
   >
-    <div class="vue-voice-recorder">
+    <div :class="['vue-voice-recorder', { 'recording': isRecording }]">
       <div class="vue-voice-recorder__container">
       <div class="vue-voice-recorder__start-and-stop" @mousedown="handleMouseDown" @mouseup="handleMouseUp" @click="handleClick">
           <div class="vue-voice-recorder__state">
@@ -103,7 +103,6 @@ const immediateStop = () => {
 };
 
 const handleClick = () => {
-  console.log("In click");
   if(props.pressAndHoldToRecord)
     return;
 
