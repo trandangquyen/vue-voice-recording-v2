@@ -137,7 +137,7 @@ const {
   resumeRecording
 } = useRecorder({
   afterStartRecording: () => emits('afterStartRecording'),
-  afterStopRecording: (blob) => emits('afterStartRecording', blob),
+  afterStopRecording: (blob) => emits('afterStopRecording', blob),
   afterPauseRecording: () => emits('afterPauseRecording'),
   afterResumeRecording: () => emits('afterResumeRecording'),
   getAsMp3: (value) => emits('getAsMp3', value),
